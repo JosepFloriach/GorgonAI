@@ -1,0 +1,66 @@
+.boardContainer
+{
+    min-height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.algorithm-visualization
+{
+    min-height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row
+{
+    display:grid;
+    overflow: hidden;
+    position: relative;
+    flex-wrap: wrap;
+    height: auto;
+    display: flex;
+    vertical-align: middle;
+    width:100%;
+}
+
+.intersection {
+	max-width: 100%;	
+	min-width: 100%;
+	position:relative;
+	top: 0px;
+    left: 0px;
+	height: auto;	
+	z-index: 1;
+}
+
+.black_stone_hint,
+.white_stone_hint {
+	opacity: 0.7;
+	z-index: 2;
+}
+
+.black_stone,
+.white_stone
+{
+	z-index: 3;
+}
+
+.white_stone_hint,
+.black_stone_hint,
+.white_stone,
+.black_stone {	
+
+	max-width: 100%;	
+	min-width: 100%;
+	max-height: 100%;
+	min-height: 100%;
+	position:absolute;
+	top: 0px;
+    left: 0px;
+	height: auto;	
+}
