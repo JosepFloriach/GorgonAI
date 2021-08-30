@@ -27,3 +27,8 @@ std::vector<int8_t> Match::GetBoardState() const
 {
     return board.GetBoardState();
 }
+
+void Match::ResetMatch()
+{
+    board.Reset();
+}

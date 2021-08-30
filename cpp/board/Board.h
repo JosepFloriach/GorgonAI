@@ -1,4 +1,9 @@
+#pragma once
+
 #include <vector>
+
+#include "RulesValidator.h"
+#include "BoardData.h"
 
 class Board
 {
@@ -10,13 +15,13 @@ class Board
 			COLOR_WHITE
 		};
 			
+		void Reset();
 		void Init(int size);
 		const std::vector<int8_t>& PlayStone(int8_t row, int8_t col, StoneColor color);
 		const std::vector<int8_t>& GetBoardState() const;
+
 	private:
-	
-		int GetFlattenedIndex(int8_t row, int8_t col) const;
-	
-		std::vector<int8_t> _board;
-		int _size;
+		RulesValidator _rulesValidator;
+		BoardData _data;
+
 };
