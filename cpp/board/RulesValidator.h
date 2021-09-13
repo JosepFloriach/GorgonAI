@@ -2,13 +2,12 @@
 
 #include <vector>
 
+#include "IRulesValidator.h"
 #include "BoardData.h"
 
-class RulesValidator
+class RulesValidator : public IRulesValidator
 {
 	public:
-		bool Validate(const BoardData& data, int8_t row, int8_t col, int8_t color) const;
+		bool Validate(const IBoardData& data, int8_t row, int8_t col, int8_t color) const override;
 
-	private:
-			
 };

@@ -1,22 +1,17 @@
+#pragma once
+
+#include "IMatchManager.h"
 #include "Match.h"
 #include <unordered_map>
 #include <string>
 
-class MatchManager
+class MatchManager : public IMatchManager
 {
 public:
-    struct MatchSetup
-    {
-        const std::string& whitePlayerName;
-        const std::string& blackPlayerName;
-
-        MatchSetup(const std::string& aWhitePlayerName, const std::string& aBlackPlayerName);
-    };
-
-    Match* GetMatchById(long id);
-    long CreateMatch(const MatchSetup& setup);
+    IMatch* GetMatchById(long id) override;
+    long CreateMatch(const MatchSetup& setup) override;
 
 private:
-    std::unordered_map<long, Match> matches;
-    long currentId = 0;
+    std::unordered_map<long, std::unique_ptr<IMatch>> _matches;
+    long _currentId = 0;
 };

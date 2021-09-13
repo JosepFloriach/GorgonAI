@@ -1,27 +1,25 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
+#include "IBoard.h"
 #include "RulesValidator.h"
 #include "BoardData.h"
+#include "Intersection.h"
 
-class Board
+class Board : public IBoard
 {
 	public:
-		enum StoneColor
-		{
-			COLOR_EMPTY,
-			COLOR_BLACK,
-			COLOR_WHITE
-		};
-			
-		void Reset();
-		void Init(int size);
-		const std::vector<int8_t>& PlayStone(int8_t row, int8_t col, StoneColor color);
-		const std::vector<int8_t>& GetBoardState() const;
+
+		Board();
+
+		void Reset() override;
+		void Init(int size) override;
+		const std::vector<Intersection>& PlayStone(int8_t row, int8_t col, StoneColor color) override;
+		const std::vector<Intersection>& GetBoardState() const override;
 
 	private:
-		RulesValidator _rulesValidator;
-		BoardData _data;
-
+		std::unique_ptr<IRulesValidator> _rulesValidator;
+		std::unique_ptr<IBoardData> _data;
 };

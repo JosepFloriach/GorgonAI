@@ -1,34 +1,35 @@
 #include "Match.h"
 #include <iostream>
 Match::Match(long aId, const std::string& aWhitePlayerName, const std::string& aBlackPlayerName)
-    : id(aId)
-    , whitePlayerName(aWhitePlayerName)
-    , blackPlayerName(aBlackPlayerName)
+    : _id(aId)
+    , _whitePlayerName(aWhitePlayerName)
+    , _blackPlayerName(aBlackPlayerName)
+    , _board(std::make_unique<Board>())
 {
 }
 
-std::vector<int8_t> Match::InitMatch(int size)
+const std::vector<Intersection>& Match::InitMatch(int size)
 {
-    board.Init(size);
-    return board.GetBoardState();
+    _board->Init(size);
+    return _board->GetBoardState();
 }
 
-std::vector<int8_t> Match::PlayBlackStone(int8_t row, int8_t col)
+const std::vector<Intersection>& Match::PlayBlackStone(int8_t row, int8_t col)
 {
-    return board.PlayStone(row, col, Board::StoneColor::COLOR_BLACK);
+    return _board->PlayStone(row, col, Board::StoneColor::COLOR_BLACK);
 }
 
-std::vector<int8_t> Match::PlayWhiteStone(int8_t row, int8_t col)
+const std::vector<Intersection>& Match::PlayWhiteStone(int8_t row, int8_t col)
 {
-    return board.PlayStone(row, col, Board::StoneColor::COLOR_WHITE);
+    return _board->PlayStone(row, col, Board::StoneColor::COLOR_WHITE);
 }
 
-std::vector<int8_t> Match::GetBoardState() const
+const std::vector<Intersection>& Match::GetBoardState() const
 {
-    return board.GetBoardState();
+    return _board->GetBoardState();
 }
 
 void Match::ResetMatch()
 {
-    board.Reset();
+    _board->Reset();
 }
